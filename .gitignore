@@ -20,6 +20,24 @@ build/
 # Optional eslint cache
 .eslintcache
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+*.egg-info/
+
 # OS-specific files
 .DS_Store
 .env
