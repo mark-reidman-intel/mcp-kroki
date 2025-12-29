@@ -34,8 +34,11 @@ dependencies = [
     "httpx>=0.27.0",
 ]
 
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
 [project.scripts]
-kroki-server = "kroki_server:main"
+kroki-server = "src.kroki_server:main"
 
 [project.urls]
 Homepage = "https://github.com/mark-reidman-intel/mcp-kroki"
