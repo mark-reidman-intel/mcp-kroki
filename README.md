@@ -14,13 +14,12 @@ An MCP (Model Context Protocol) server for converting Mermaid diagrams to SVG im
 
 ## Installation
 
-### local install
+### Local Install
 
 ```bash
-git clone https://github.com/tkoba1974/mcp-kroki.git
+git clone https://github.com/mark-reidman-intel/mcp-kroki.git
 cd mcp-kroki
-npm install
-npm run build
+pip install -r requirements.txt
 ```
 
 ## Usage
@@ -49,20 +48,20 @@ Parameters:
 
 ## Example
 
-```javascript
-// Generate a URL for a Mermaid diagram
-const result = await callTool('generate_diagram_url', {
-  type: 'mermaid',
-  content: 'graph TD; A-->B; B-->C; C-->D;',
-  outputFormat: 'svg'
-});
+```python
+# Generate a URL for a Mermaid diagram
+result = await generate_diagram_url_tool(
+    type='mermaid',
+    content='graph TD; A-->B; B-->C; C-->D;',
+    outputFormat='svg'
+)
 
-// Download a Mermaid diagram
-const result = await callTool('download_diagram', {
-  type: 'mermaid',
-  content: 'graph TD; A-->B; B-->C; C-->D;',
-  outputPath: '/path/to/diagram.svg'
-});
+# Download a Mermaid diagram
+result = await download_diagram(
+    type='mermaid',
+    content='graph TD; A-->B; B-->C; C-->D;',
+    outputPath='/path/to/diagram.svg'
+)
 ```
 
 ## How It Works
@@ -73,28 +72,29 @@ The server uses the Kroki.io API to convert diagrams. The diagram content is com
 
 Add to your Claude Desktop configuration file (claude_desktop_config.json):
 
-### local install:
+### Local Install:
 ```json
 {
   "mcpServers": {
     "mcp-kroki": {
-      "command": "node",
-      "args": ["/path/to/mcp-kroki/build/index.js"]
+      "command": "python",
+      "args": ["/path/to/mcp-kroki/src/kroki_server.py"]
     }
   }
 }
 ```
 
-### npx：
+### Using uv (recommended):
 
 ```json
 {
   "mcpServers": {
     "mcp-kroki": {
-      "command": "npx",
+      "command": "uvx",
       "args": [
-        "-y",
-        "@tkoba1974/mcp-kroki"
+        "--from",
+        "git+https://github.com/mark-reidman-intel/mcp-kroki",
+        "kroki-server"
       ]
     }
   }

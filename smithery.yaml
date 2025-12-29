@@ -9,5 +9,5 @@ startCommand:
   commandFunction:
     # A function that produces the CLI command to start the MCP on stdio.
     |-
-    (config) => ({ command: 'node', args: ['./build/index.js'] })
+    (config) => ({ command: 'python', args: ['./src/kroki_server.py'] })
   exampleConfig: {}

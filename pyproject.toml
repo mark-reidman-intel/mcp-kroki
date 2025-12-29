@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-kroki"
+version = "1.1.0"
+description = "A Model Context Protocol server for converting Mermaid diagrams to SVG using Kroki.io"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Takao" }
+]
+keywords = [
+    "mcp",
+    "model-context-protocol",
+    "kroki",
+    "mermaid",
+    "svg",
+    "diagram"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "fastmcp>=0.1.0",
+    "httpx>=0.27.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[project.scripts]
+kroki-server = "src.kroki_server:main"
+
+[project.urls]
+Homepage = "https://github.com/mark-reidman-intel/mcp-kroki"
+Repository = "https://github.com/mark-reidman-intel/mcp-kroki"
